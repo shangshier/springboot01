@@ -7,7 +7,7 @@ package com.boot.template.enum_class;
  */
 public enum EnumClass {
 
-    RED,GREEN,BLUE;
+    RED,GREEN,BLUE,Bolck;
 
     EnumClass() {
     }
