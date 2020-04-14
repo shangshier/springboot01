@@ -1,10 +1,15 @@
 package com.boot;
 
+import com.boot.template.aop_1.AppConfig;
+import com.boot.template.aop_1.Business;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.swing.*;
@@ -16,12 +21,14 @@ import java.net.Socket;
 
 @SpringBootApplication
 @EnableScheduling
-@ComponentScan({"com.boot"})
 public class Springboot01Application {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(Springboot01Application.class, args);
 
+		ApplicationContext context1 = new AnnotationConfigApplicationContext(AppConfig.class);
+		Business business = (Business) context1.getBean("business");
+		business.delete("askjdfajsdkfjasjdf");
 //		try {
 //			//创建被监听的端口号
 //			ServerSocket serverSocket = new ServerSocket(5200);

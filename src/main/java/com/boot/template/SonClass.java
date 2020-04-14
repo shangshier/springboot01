@@ -35,6 +35,9 @@ public class SonClass extends ParentClass {
 
 
     public static void main(String[] args) {
+
+        System.out.println("市一中_高中".substring("市一中_高中".indexOf("_") + 1));
+
         SonClass son = new SonClass();
 
         son.parentMonthed();

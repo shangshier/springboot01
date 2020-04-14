@@ -8,10 +8,11 @@ package com.boot.template.design_mode.FactoryMode.factory_funtion_mode;
 public class TwoFunctionTypeFactary extends TwoFuntionFactary {
     @Override
     public <T extends IFunctionCars> T getType(Class<T> clazz) {
-        IFunctionCars cars = null;
+//        IFunctionCars cars = null;
 
         try {
-            cars = (IFunctionCars) Class.forName(clazz.getName()).newInstance();
+//            cars = (IFunctionCars) Class.forName(clazz.getName()).newInstance();
+            return (T) Class.forName(clazz.getName()).newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -20,6 +21,7 @@ public class TwoFunctionTypeFactary extends TwoFuntionFactary {
             e.printStackTrace();
         }
 
-        return (T) cars;
+//        return (T) cars;
+        return null;
     }
 }

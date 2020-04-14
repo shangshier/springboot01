@@ -13,9 +13,10 @@ public class ThreadSchedulerMain {
 
     public static void main(String[] args){
 
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Springboot01Application.class);
-        SchedulerConfig config = context.getBean(SchedulerConfig.class);
-        config.runThreadTask();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ScanConfig.class);
+        System.out.println(ScanConfig.class);
+//        SchedulerConfig config = context.getBean(SchedulerConfig.class);
+//        config.runThreadTask();
 
     }
 }

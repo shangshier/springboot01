@@ -1,5 +1,7 @@
 package com.boot.template.design_mode.ProxyMode.dynamic_proxy;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
@@ -23,13 +25,13 @@ public class DynamicProxy {
     //给目标对象生成代理对象
     public Object getProxyInterface(){
 
-        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
-                (proxy, method, args) -> {
-                    beginFun();
-                    Object returnValue = method.invoke(target,args);
-                    endFun();
-                    return returnValue;
-                }
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),new CustomInvocationHandler(target)
+//                (proxy, method, args) -> {
+//                    beginFun();
+//                    Object returnValue = method.invoke(target,args);
+//                    endFun();
+//                    return returnValue;
+//                }
         );
     }
 
@@ -50,6 +52,7 @@ public class DynamicProxy {
 
         //给定目标对象,动态创建代理对象
         IDynamicProxyInterface proxy = (IDynamicProxyInterface) new DynamicProxy(dynamicProxyInterface).getProxyInterface();
+        Class[] clazz = proxy.getClass().getInterfaces();
         //代理对象类型
         System.out.println(proxy.getClass());
 
